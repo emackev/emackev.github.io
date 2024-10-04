@@ -4,6 +4,29 @@
   <meta charset='UTF-8'>
   <title>ELM</title>
   <link rel='stylesheet' href='ClaireStyle.css' media='screen'>
+  <style>
+    .video-container {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .video-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .video-frame {
+      border: none;
+      width: 100%;
+      height: 315px;
+    }
+    @media (min-width: 600px) {
+      .video-frame {
+        height: 360px;
+      }
+    }
+  </style>
 </head>
 <body>
 <section id='preface' class='body-width'>
@@ -20,19 +43,25 @@
 	currently high-resolution behavioral recordings of groups of animals foraging in environments ranging from NYC to Arctic Alaska.
 	</ul>
   <ul align="right"><a href=MackeviciusCV.pdf>CV</a></ul>
-  <ul align="right"><a href=https://scholar.google.com/citations?hl=en&user=G5eTd40AAAAJ&view_op=list_works>Google Scholar</a></ul>
+  <ul align="right"><a href=https://twitter.com/e_mackevicius>Twitter</a></ul>
 <ul align="justify">
     </ul>
 
   </section>
 
 <section id='subsections' class='body-width'>
-	<article class='halfsection'><h2>Papers</h2>
-		<li> <iframe src="https://scholar.google.com/citations?user=G5eTd40AAAAJ&hl=en&oi=sra"
-        width="600" height="600" frameborder="0"></iframe> </li>
+	<article class='halfsection'><h2>Press</h2>
+		<ul align="right"><a href=https://scholar.google.com/citations?hl=en&user=G5eTd40AAAAJ&view_op=list_works>Google Scholar publication list</a></ul>
 	</article>
 
   <article class='halfsection'><h2>Videos</h2>
+	  <div class="video-container">
+    <div class="video-title">SeqNMF COSYNE talk</div>
+    <iframe class="video-frame" 
+            src="https://www.youtube.com/embed/XyWtCtZ_m-8?si=O62T9p5sOByP85py" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+  </div>
 	  <li><iframe width="560" height="315" src="https://www.youtube.com/embed/XyWtCtZ_m-8?si=O62T9p5sOByP85py" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></li>
     <li>
       SeqNMF <a href=https://www.youtube.com/watch?v=XyWtCtZ_m-8>COSYNE talk</a>, <a href=https://cbmm.mit.edu/video/unsupervised-discovery-temporal-sequences-high-dimensional-datasets/>tutorial</a>, and Simons Collaboration on the Global Brain: <a https://www.simonsfoundation.org/2018/05/04/finding-neural-patterns-in-the-din/>article</a></li>
