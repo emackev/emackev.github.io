@@ -28,35 +28,18 @@
 
 <section id='subsections' class='body-width'>
 	<article class='halfsection'><h2>Papers</h2>
-	<li>C Fang, D Aronov, LF Abbott, EL Mackevicius. <a href =
-    https://www.biorxiv.org/content/10.1101/2022.05.18.492543v1>Neural learning rules for generating flexible predictions and computing the successor representation</a>. BioRxiv preprint, 2022.</li>
-    <li></li>
-	<li>EL Mackevicius, S Gu, NI Denisenko, MS Fee. <a href =
-    https://www.biorxiv.org/content/10.1101/2022.02.18.480996v1>Self-organization of songbird neural sequences during social isolation</a>. BioRxiv preprint, 2022.</li>
-    <li></li>
-    <li>EL Mackevicius, MTL Happ, MS Fee. <a href =
-    https://www.nature.com/articles/s41467-020-18732-x>An avian cortical circuit for chunking tutor song syllables into simple vocal-motor units</a>. Nature Communications 2020. Data available <a href =
-    http://crcns.org/data-sets/aa/am-4>here</a>.</li>
-    <li></li>
-    <li>EL Mackevicius, AH Bahle, AH Williams, S Gu, NI Denisenko, MS Goldman, MS Fee. <a href =
-    https://elifesciences.org/articles/38471>Unsupervised discovery of temporal sequences in high-dimensional datasets, with applications to neuroscience</a>. eLife 2019. Code available <a href =
-    https://github.com/FeeLab/seqNMF>here</a>.</li>
-    <li></li>
-    <li>EL Mackevicius and MS Fee. <a href=https://www.ncbi.nlm.nih.gov/pubmed/29268193>
-    Building a state space for song learning</a>. Current Opinion in Neurobiology 2018.</li>
-    <li></li>
-    <li>TS Okubo, EL Mackevicius, HL Payne, GF Lynch, and MS Fee. <a href=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957523/>
-      Growth and splitting of neural sequences in songbird vocal
-      development</a>. Nature 2015. Modeling code available <a href =
-    https://github.com/emackev/HVCModelCode>here</a>.</li>
-    <li></li>
-    <li>TS Okubo, EL Mackevicius, and MS Fee. <a href=http://cshprotocols.cshlp.org/content/2014/12/pdb.prot084624.long>
-    In vivo recording of single-unit activity during singing in zebra finches</a>. Cold Spring Harbor Protocols, October 23,
-    2014. 2014(12):1273-83.</li>
-    <li></li>
-    <li>EL Mackevicius, MD Best, HP Saal, and SJ Bensmaia. <a href=http://www.jneurosci.org/content/32/44/15309.long> Millisecond
-    precision spike timing shapes tactile perception</a>. Journal of Neuroscience, October 31, 2012. 32(44):15309-15317.
-    </li>
+	<div id="publications"></div>
+	<script>
+	  fetch('https://serpapi.com/search.json?engine=google_scholar&user=G5eTd40AAAAJ')
+	    .then(response => response.json())
+	    .then(data => {
+	      const publications = data.publications.map(pub => `
+	        <li><a href="${pub.link}">${pub.title}</a></li>
+	      `);
+	      document.getElementById('publications').innerHTML = `<ul>${publications.join('')}</ul>`;
+	    });
+	</script>
+
 	</article>
 
   <article class='halfsection'><h2>Videos</h2>
