@@ -28,21 +28,12 @@
 
 <section id='subsections' class='body-width'>
 	<article class='halfsection'><h2>Papers</h2>
-	<div id="publications"></div>
-	<script>
-	  fetch('https://serpapi.com/search.json?engine=google_scholar&user=G5eTd40AAAAJ')
-	    .then(response => response.json())
-	    .then(data => {
-	      const publications = data.publications.map(pub => `
-	        <li><a href="${pub.link}">${pub.title}</a></li>
-	      `);
-	      document.getElementById('publications').innerHTML = `<ul>${publications.join('')}</ul>`;
-	    });
-	</script>
-
+		<li> <iframe src="https://scholar.google.com/citations?user=G5eTd40AAAAJ&hl=en&oi=sra"
+        width="600" height="600" frameborder="0"></iframe> </li>
 	</article>
 
   <article class='halfsection'><h2>Videos</h2>
+	  <li><iframe width="560" height="315" src="https://www.youtube.com/embed/XyWtCtZ_m-8?si=O62T9p5sOByP85py" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></li>
     <li>
       SeqNMF <a href=https://www.youtube.com/watch?v=XyWtCtZ_m-8>COSYNE talk</a>, <a href=https://cbmm.mit.edu/video/unsupervised-discovery-temporal-sequences-high-dimensional-datasets/>tutorial</a>, and Simons Collaboration on the Global Brain: <a https://www.simonsfoundation.org/2018/05/04/finding-neural-patterns-in-the-din/>article</a></li>
     <li></li>
