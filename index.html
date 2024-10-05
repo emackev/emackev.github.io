@@ -46,6 +46,7 @@
 	currently high-resolution behavioral recordings of groups of animals foraging in environments ranging from NYC to Arctic Alaska.
 	</ul>
   <ul align="right"><a href=MackeviciusCV.pdf>CV</a></ul>
+  <ul align="right"><a href=https://github.com/emackev>GitHub</a></ul>
   <ul align="right"><a href=https://twitter.com/e_mackevicius>Twitter</a></ul>
   <ul align="right"><a href=https://scholar.google.com/citations?hl=en&user=G5eTd40AAAAJ&view_op=list_works>Google Scholar publication list</a></ul>
 
@@ -161,7 +162,9 @@
     <a href="#" target="_blank" class="embed-title">Chickadees are Memory Geniuses. Their Barcode-Like Neural Activity May Be To Thank.</a>
     <iframe class="embed-frame" 
             src="https://zuckermaninstitute.columbia.edu/chickadees-are-memory-geniuses-their-barcode-neural-activity-may-be-thank" 
-            ></iframe>
+            style="visibility: hidden;" 
+	    // hiding visibility bc embedding blocked from this website
+	    ></iframe>
   	</div>
 
     <div class="embed-container">
@@ -175,6 +178,8 @@
     <a href="#" target="_blank" class="embed-title">Zuckerman Scientists Merge Art and AI in Venice</a>
     <iframe class="embed-frame" 
             src="https://zuckermaninstitute.columbia.edu/zuckerman-scientists-merge-art-and-ai-venice" 
+	    style="visibility: hidden;" 
+	    // hiding visibility bc embedding blocked from this website
             ></iframe>
   	</div>
 			
@@ -245,6 +250,7 @@
 </footer>
 
 <script type="text/javascript">
+  // Google Analytics tracking code
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-40333902-1']);
   _gaq.push(['_trackPageview']);
@@ -260,30 +266,20 @@
 
   window.onload = function() {
     
-    const iframes = document.querySelectorAll('.embed-frame');
-    const titles = document.querySelectorAll('.embed-title');
+    const iframes = document.querySelectorAll('.embed-frame'); // Select all iframes
+    const titles = document.querySelectorAll('.embed-title');  // Select all titles
 
-    // Set title href to iframe src
+    // Set the title's href to match the iframe's src
     iframes.forEach((iframe, index) => {
       if (iframe && iframe.src && titles[index]) {
-        titles[index].href = iframe.src;
+        titles[index].href = iframe.src; // Set title link to the iframe source
       } else {
-        console.error("Iframe source not found.");
+        console.error("Iframe or title not found for index: " + index);
       }
-    });
-
-    // Check for iframe loading issues using a timeout
-    iframes.forEach((iframe) => {
-      // Set a timeout to remove the iframe if it hasn't loaded within 5 seconds
-      setTimeout(() => {
-        if (!iframe.complete || iframe.contentWindow === null) {
-          console.error(`Iframe failed to load: ${iframe.src}`);
-          iframe.remove(); // Remove the iframe if it hasn't loaded in 5 seconds
-        }
-      }, 5000); // 5 seconds timeout
     });
   };
 </script>
+
 
 
 
