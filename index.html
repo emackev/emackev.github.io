@@ -246,7 +246,7 @@
     <p><span>Claire Mackevicius</span></p>
 </footer>
 
- <script type="text/javascript">
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-40333902-1']);
   _gaq.push(['_trackPageview']);
@@ -274,18 +274,35 @@
       }
     });
 
-    // Check for iframe loading issues with a timeout
+    // Check for iframe loading issues
     iframes.forEach((iframe) => {
-      const checkIframeLoad = setTimeout(() => {
-        // If iframe is not loaded after 3 seconds, remove it
-        if (!iframe.contentWindow || iframe.contentDocument.location.href === "about:blank") {
-          console.error(`Iframe failed to load: ${iframe.src}`);
-          iframe.remove(); // Remove the iframe if it fails
+      // Wait for the iframe to load
+      iframe.onload = function() {
+        try {
+          // Attempt to access the iframe's content
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+          // If accessing the content fails or if it's empty, remove the iframe
+          if (!doc || doc.location.href === "about:blank") {
+            console.error(`Iframe failed to load: ${iframe.src}`);
+            iframe.remove(); // Remove the iframe if it fails
+          }
+        } catch (e) {
+          // If a cross-origin error occurs, remove the iframe
+          console.error(`Cross-origin issue with iframe: ${iframe.src}`);
+          iframe.remove(); // Remove the iframe due to cross-origin restriction
         }
-      }, 10000); // 10 seconds timeout
+      };
+
+      // Add an error handler if the iframe fails to load (for non-CORS issues)
+      iframe.onerror = function() {
+        console.error(`Iframe failed to load: ${iframe.src}`);
+        iframe.remove(); // Remove the iframe if it fails
+      };
     });
   };
 </script>
+
 
 	
 	</body>
