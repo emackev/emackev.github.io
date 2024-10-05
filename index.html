@@ -15,7 +15,7 @@
     }
     .embed-title {
     display: block; /* Ensures the anchor behaves like a block element */
-    margin-top: 20px;  /* Adds more space above the title */
+    margin-top: 10px;  /* Adds more space above the title */
     margin-bottom: 10px; /* Adds space below the title */
     text-decoration: none; /* Removes underline */
     }
@@ -136,7 +136,7 @@
   	</div>
 
     <div class="embed-container">
-    <a href="#" target="_blank" class="embed-title"><a href=http://cbmm.mit.edu/>CBMM</a> summer course on Learning from a Computational
+    <a href="#" target="_blank" class="embed-title">CBMM summer course on Learning from a Computational
       Neuroscience Perspective</a>
     <iframe class="embed-frame" 
             src="https://www.youtube.com/embed/F_tdwSeXiK4?si=xbc_dpqd2KaGsIuI" 
@@ -279,7 +279,7 @@
           console.error(`Iframe failed to load: ${iframe.src}`);
           iframe.remove(); // Remove the iframe if it fails
         }
-      }, 3000); // 3 seconds timeout
+      }, 10000); // 10 seconds timeout
     });
   };
 </script>
