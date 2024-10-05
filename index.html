@@ -272,34 +272,19 @@
       }
     });
 
-    // Check for iframe loading issues
+    // Check for iframe loading issues using a timeout
     iframes.forEach((iframe) => {
-      // Wait for the iframe to load
-      iframe.onload = function() {
-        try {
-          // Attempt to access the iframe's content
-          const doc = iframe.contentDocument || iframe.contentWindow.document;
-
-          // If accessing the content fails or if it's empty, remove the iframe
-          if (!doc || doc.location.href === "about:blank") {
-            console.error(`Iframe failed to load: ${iframe.src}`);
-            iframe.remove(); // Remove the iframe if it fails
-          }
-        } catch (e) {
-          // If a cross-origin error occurs, remove the iframe
-          console.error(`Cross-origin issue with iframe: ${iframe.src}`);
-          iframe.remove(); // Remove the iframe due to cross-origin restriction
+      // Set a timeout to remove the iframe if it hasn't loaded within 5 seconds
+      setTimeout(() => {
+        if (!iframe.complete || iframe.contentWindow === null) {
+          console.error(`Iframe failed to load: ${iframe.src}`);
+          iframe.remove(); // Remove the iframe if it hasn't loaded in 5 seconds
         }
-      };
-
-      // Add an error handler if the iframe fails to load (for non-CORS issues)
-      iframe.onerror = function() {
-        console.error(`Iframe failed to load: ${iframe.src}`);
-        iframe.remove(); // Remove the iframe if it fails
-      };
+      }, 5000); // 5 seconds timeout
     });
   };
 </script>
+
 
 
 	
