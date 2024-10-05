@@ -7,7 +7,11 @@
 
  <style>
     .embed-container {
-      text-align: left;
+	text-align: left;
+	background-color: #f0f0f0; /* Light gray background */
+	padding: 15px;            /* Adds space inside the container */
+	margin-bottom: 20px;      /* Space between groups */
+	border-radius: 8px;       /* Optional: Rounded corners */
     }
     .embed-title {
     display: block; /* Ensures the anchor behaves like a block element */
@@ -50,37 +54,7 @@
   </section>
 
 <section id='subsections' class='body-width'>
-	<article class='halfsection'><h2>Press</h2>
-	
-    <div class="embed-container">
-    <a href="#" target="_blank" class="embed-title">Scurrying Around Town With the Neuroscientists Studying NYC Rats</a>
-    <iframe class="embed-frame" 
-            src="https://hellgatenyc.com/rat-ride-along-nyc/" 
-            ></iframe>
-  	</div>
-		
-<div class="embed-container">
-    <a href="#" target="_blank" class="embed-title">Chickadees are Memory Geniuses. Their Barcode-Like Neural Activity May Be To Thank.</a>
-    <iframe class="embed-frame" 
-            src="https://zuckermaninstitute.columbia.edu/chickadees-are-memory-geniuses-their-barcode-neural-activity-may-be-thank" 
-            ></iframe>
-  	</div>
 
-    <div class="embed-container">
-    <a href="#" target="_blank" class="embed-title">Linking Algorithms to Neural Mechanisms in Predictive Memory Models</a>
-    <iframe class="embed-frame" 
-            src="https://www.basis.ai/blog/sr-fang2023/" 
-            ></iframe>
-  	</div>
-
-<div class="embed-container">
-    <a href="#" target="_blank" class="embed-title">Zuckerman Scientists Merge Art and AI in Venice</a>
-    <iframe class="embed-frame" 
-            src="https://zuckermaninstitute.columbia.edu/zuckerman-scientists-merge-art-and-ai-venice" 
-            ></iframe>
-  	</div>
-			
-	</article>
 
   <article class='halfsection'><h2>Talks, podcasts, etc</h2>
 	  
@@ -171,6 +145,43 @@
   	</div>
 	  
   </article>
+
+	
+<article class='halfsection'><h2>Press</h2>
+	
+    <div class="embed-container">
+    <a href="#" target="_blank" class="embed-title">Scurrying Around Town With the Neuroscientists Studying NYC Rats</a>
+    <iframe class="embed-frame" 
+            src="https://hellgatenyc.com/rat-ride-along-nyc/" 
+            ></iframe>
+  	</div>
+		
+<div class="embed-container">
+    <a href="#" target="_blank" class="embed-title">Chickadees are Memory Geniuses. Their Barcode-Like Neural Activity May Be To Thank.</a>
+    <iframe class="embed-frame" 
+            src="https://zuckermaninstitute.columbia.edu/chickadees-are-memory-geniuses-their-barcode-neural-activity-may-be-thank" 
+            ></iframe>
+  	</div>
+
+    <div class="embed-container">
+    <a href="#" target="_blank" class="embed-title">Linking Algorithms to Neural Mechanisms in Predictive Memory Models</a>
+    <iframe class="embed-frame" 
+            src="https://www.basis.ai/blog/sr-fang2023/" 
+            ></iframe>
+  	</div>
+
+<div class="embed-container">
+    <a href="#" target="_blank" class="embed-title">Zuckerman Scientists Merge Art and AI in Venice</a>
+    <iframe class="embed-frame" 
+            src="https://zuckermaninstitute.columbia.edu/zuckerman-scientists-merge-art-and-ai-venice" 
+            ></iframe>
+  	</div>
+			
+	</article>
+
+	
+
+	
   </section>
 
 <section id='preface' class='body-width'>
@@ -233,31 +244,39 @@
 </footer>
 
     <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-40333902-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    var ga = document.createElement('script'); 
+    ga.type = 'text/javascript'; 
+    ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    var s = document.getElementsByTagName('script')[0]; 
+    s.parentNode.insertBefore(ga, s);
   })();
 
+  window.onload = function() {
+    
+    const iframes = document.querySelectorAll('.embed-frame');
+    const titles = document.querySelectorAll('.embed-title');
 
-    window.onload = function() {
-      // Get the iframe's src attribute
-      const iframe = document.querySelector('.embed-container iframe');
-      const embedTitle = document.querySelector('.embed-title');
-
-      // Check if iframe src exists and is valid
-      if (iframe && iframe.src) {
-        // Set the href of the embed-title to the iframe's src value
-        embedTitle.href = iframe.src;
+    iframes.forEach((iframe, index) => {
+      if (iframe && iframe.src && titles[index]) {
+        titles[index].href = iframe.src;
       } else {
         console.error("Iframe source not found.");
       }
-    }
+    });
+
+    iframes.forEach((iframe) => {
+      iframe.onerror = function() {
+        console.error(`Iframe failed to load: ${iframe.src}`);
+        iframe.remove(); // Remove the iframe if it fails
+      };
+    });
+  };
   </script>
 	
 	</body>
