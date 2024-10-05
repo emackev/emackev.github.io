@@ -25,6 +25,9 @@
     .embed-frame {
     width: 100%;
     border: none;
+    max-height: 600px; /* Set a maximum height */
+    overflow: auto; /* Allow scrolling within the iframe if the content exceeds the max height */
+
     }
 
   </style>
@@ -263,6 +266,7 @@
     s.parentNode.insertBefore(ga, s);
   })();
 
+  // Combine the title link setting and iframe resizing logic
   window.onload = function() {
     
     const iframes = document.querySelectorAll('.embed-frame'); // Select all iframes
@@ -275,12 +279,19 @@
       } else {
         console.error("Iframe or title not found for index: " + index);
       }
+
+      // Auto-resize the iframe based on its content, but set a max height
+      iframe.onload = function() {
+        try {
+          const contentHeight = iframe.contentWindow.document.body.scrollHeight;
+          iframe.style.height = Math.min(contentHeight, 600) + 'px'; // Max height of 600px
+        } catch (e) {
+          console.error("Unable to access iframe content for resizing due to cross-origin restrictions.");
+        }
+      };
     });
   };
 </script>
-
-
-
 
 	
 	</body>
